@@ -1,0 +1,10 @@
+(library
+ ((name ppx_optcomp_old)
+  (public_name ppx_optcomp_old)
+  (kind ppx_rewriter)
+  (flags (:standard -safe-string))
+  (libraries (compiler-libs.common ppx_core ppx_driver))
+  (preprocess no_preprocessing)
+  ))
+
+(jbuild_version 1)
