@@ -546,7 +546,7 @@ end = struct
     in
     let loc = { token.loc with loc_end = Lexing.lexeme_end_p lexbuf } in
     if not in_import then begin
-      Params.register_correction ~repl:"[@@@" ~loc:hash_loc;
+      Params.register_correction ~repl:"[%%" ~loc:hash_loc;
       Params.register_correction ~repl:"]"
         ~loc:{ loc_ghost = false
              ; loc_start = end_pos
