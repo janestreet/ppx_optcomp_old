@@ -1,6 +1,7 @@
 (** Optional compilation with cpp-like directives *)
 
-open Ppx_core
+open Stdio
+open Ppxlib
 
 module Value : sig
   (** Representation of values supported by optcomp. *)

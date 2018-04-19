@@ -1,4 +1,4 @@
-open Ppx_core
+open Ppxlib
 
 module M = Ppx_optcomp_old.Make(struct
     let env = Ppx_optcomp_old.Env.init

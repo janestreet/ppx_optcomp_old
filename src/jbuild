@@ -2,7 +2,7 @@
  ((name ppx_optcomp_old)
   (public_name ppx_optcomp_old)
   (kind ppx_rewriter)
-  (libraries (compiler-libs.common ppx_core ppx_driver))
+  (libraries (compiler-libs.common base stdio ppxlib))
   (preprocess no_preprocessing)
   ))
 

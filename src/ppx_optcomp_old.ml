@@ -1,4 +1,6 @@
-open Ppx_core
+open Base
+open Stdio
+open Ppxlib
 open Ast_builder.Default
 
 module Filename = Caml.Filename
@@ -911,18 +913,18 @@ end
 let () =
   let use_optcomp = ref true in
   let migrate = ref false in
-  Ppx_driver.add_arg "-no-optcomp" (Clear use_optcomp)
+  Ppxlib.Driver.add_arg "-no-optcomp" (Clear use_optcomp)
     ~doc:" Disable ppx_optcomp_old";
-  Ppx_driver.add_arg "-upgrade-optcomp-syntax" (Set migrate)
+  Ppxlib.Driver.add_arg "-upgrade-optcomp-syntax" (Set migrate)
     ~doc:" Upgrade to the new optcomp syntax based on extension point";
-  Ppx_driver.register_process_file_hook (fun () ->
+  Ppxlib.Driver.register_process_file_hook (fun () ->
     if !use_optcomp then begin
       let module M =
         Make(struct
           let env = Env.init
           let register_correction =
             if !migrate then
-              Ppx_driver.register_correction
+              Ppxlib.Driver.register_correction
             else
               fun ~loc:_ ~repl:_ -> ()
         end) in
